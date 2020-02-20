@@ -63,6 +63,7 @@ librariesData.map(lib => {
   queue = queue + Number(lib.signupTime);
   var daysLeft = totalAvailableDays - queue;
   if (daysLeft <= 0) return false;
+  numbersOfLibrary++;
   // here we will sort books of library
   var elemetIndexToPush = 0;
   const libSortedBooks = sortBooks.sortBooks(sortedBooks, lib.books);
