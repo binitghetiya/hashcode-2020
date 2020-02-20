@@ -69,8 +69,10 @@ librariesData.map(lib => {
   const libSortedBooks = sortBooks.sortBooks(sortedBooks, lib.books);
   for (var i = daysLeft; i <= totalAvailableDays; i++) {
     for (var j = 0; j < lib.perDay; j++) {
-      booksToScann.push(libSortedBooks[elemetIndexToPush]);
-      elemetIndexToPush++;
+      if (libSortedBooks[elemetIndexToPush]) {
+        booksToScann.push(libSortedBooks[elemetIndexToPush]);
+        elemetIndexToPush++;
+      }
     }
   }
   allBooks.push(booksToScann);
