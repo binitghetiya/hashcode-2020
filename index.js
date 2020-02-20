@@ -11,7 +11,8 @@ const booksScores = array[1].split(" ");
 let allGlobalBooks = [];
 
 const getLibraryValue = (libData) => {
-    
+    // total avaliab
+    return 0;
 };
 
 const getLibrariesData = (arrayOfData) => {
@@ -24,6 +25,7 @@ const getLibrariesData = (arrayOfData) => {
             obj['books'] = books;
             allGlobalBooks = [...allGlobalBooks, ...books];
             libraries.push(obj);
+            obj["value"] = getLibraryValue(obj);
             obj = {};        
         } else {
             const [totalBooks, signupTime, perDay] = line.split(' ');
