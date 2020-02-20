@@ -4,7 +4,6 @@
 @return <ARRAY> sorted books from hight score to low 
 */
 function sortBooks(sortedBooksByScore, libraryBooks) {
-  console.log(libraryBooks, "////////////");
   const orderedBooks = [];
   sortedBooksByScore.map(book => {
     if (libraryBooks.includes("" + book.index)) {

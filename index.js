@@ -1,5 +1,4 @@
-const filename = "a.txt";
-const filename2 = "a.txt";
+const filename2 = "d_tough_choices.txt";
 const sortBooks = require("./sortBooks");
 // sortedBooksByScore = sortBooks.sortedBooksByScore;
 
@@ -8,12 +7,10 @@ const array = require("fs")
   .split("\n")
   .filter(Boolean);
 
-const [totalUniqueBooks, totalLibraries, totalAvailableDays] = array[0].split(
-  " "
-);
-const booksScores = array[1].split(" ");
+console.log("read done");
+const [, , totalAvailableDays] = array[0].split(" ");
 let allGlobalBooks = [];
-
+console.log("split DONE");
 const getLibraryValue = libData => {
   // total avaliab
   return 0;
@@ -24,6 +21,7 @@ const getLibrariesData = arrayOfData => {
   const currentLibrary = 0; // we need to change library after every 2 lines
   let obj = {};
   arrayOfData.forEach((line, index) => {
+    console.log(index);
     if (index % 2 !== 0) {
       const books = line.split(" ");
       obj["books"] = books;
@@ -45,15 +43,6 @@ array.shift();
 array.shift();
 const librariesData = getLibrariesData(array);
 
-console.log({
-  allGlobalBooks,
-  allBoksLength: allGlobalBooks.length,
-  totalUniqueBooks,
-  totalLibraries,
-  totalAvailableDays,
-  librariesData
-});
-
 var queue = 0;
 var numbersOfLibrary = 0;
 const sortedBooks = sortBooks.sortBooksByScore(allGlobalBooks);
@@ -61,6 +50,7 @@ const allBooks = [];
 librariesData.map(lib => {
   const booksToScann = [];
   queue = queue + Number(lib.signupTime);
+  console.log(queue);
   var daysLeft = totalAvailableDays - queue;
   if (daysLeft <= 0) return false;
   numbersOfLibrary++;
@@ -77,9 +67,20 @@ librariesData.map(lib => {
   }
   allBooks.push(booksToScann);
 });
-console.log({ allBooks });
-console.log({ numbersOfLibrary });
+var result = numbersOfLibrary + "\n";
+
 for (var x = 0; x < numbersOfLibrary; x++) {
-  console.log(x, allBooks[x].length);
-  console.log(allBooks[x]);
+  result = result + x + " " + allBooks[x].length + "\n";
+  console.log(x);
+  allBooks[x].map(book => {
+    result = result + book + " ";
+  });
+  result = result + "\n";
+}
+
+try {
+  require("fs").writeFileSync("result_c.txt", result);
+  //file written successfully
+} catch (err) {
+  console.error(err);
 }
