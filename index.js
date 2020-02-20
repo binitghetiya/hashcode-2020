@@ -76,3 +76,8 @@ librariesData.map(lib => {
   allBooks.push(booksToScann);
 });
 console.log({ allBooks });
+console.log({ numbersOfLibrary });
+for (var x = 0; x < numbersOfLibrary; i++) {
+  console.log(x, allBooks[x].length);
+  console.log(allBooks[x]);
+}
