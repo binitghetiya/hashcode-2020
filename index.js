@@ -77,7 +77,7 @@ librariesData.map(lib => {
 });
 console.log({ allBooks });
 console.log({ numbersOfLibrary });
-for (var x = 0; x < numbersOfLibrary; i++) {
+for (var x = 0; x < numbersOfLibrary; x++) {
   console.log(x, allBooks[x].length);
   console.log(allBooks[x]);
 }
