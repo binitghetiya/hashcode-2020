@@ -24,8 +24,8 @@ const getLibrariesData = (arrayOfData) => {
             const books = line.split(' ');
             obj['books'] = books;
             allGlobalBooks = [...allGlobalBooks, ...books];
-            libraries.push(obj);
             obj["value"] = getLibraryValue(obj);
+            libraries.push(obj);
             obj = {};        
         } else {
             const [totalBooks, signupTime, perDay] = line.split(' ');
